@@ -49,3 +49,17 @@ const processValue = (value: string | number): number => {
     return value * 2;
 }
 
+interface Product {
+  name: string;
+  price: number;
+}
+
+const getMostExpensiveProduct = (products: Product[]): Product | null => {
+    if(products.length === 0) {
+        return null;
+    }
+
+    const highestValue = products.toSorted((a: Product, b: Product) => b?.price - a.price);
+    return highestValue[0];
+}
+
