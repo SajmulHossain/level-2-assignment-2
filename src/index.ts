@@ -81,3 +81,15 @@ const getDayType = (day: Day): string => {
     return 'Weekday';
 }
 
+
+const squareAsync= async(n: number): Promise<number> => {
+    return new Promise((resolve, reject) => {
+        if(n >= 0) {
+            setTimeout(() => {
+                return resolve(n ** 2);
+            }, 1000);
+        } else {
+            return reject("Error: Negative number not allowed");
+        }
+    })
+}
