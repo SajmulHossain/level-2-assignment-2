@@ -19,3 +19,23 @@ const concatenateArrays = <T>(...arrays: T[][]): T[] => {
     const concatedArr = arr.concat(...arrays);
     return concatedArr;
 }
+
+
+
+class Vehicle {
+  constructor(private make: string, private year: number) {}
+
+  getInfo() {
+    return `Make: ${this.make}, Year: ${this.year}`;
+  }
+}
+
+class Car extends Vehicle {
+  constructor(make: string, year: number, private model: string) {
+    super(make, year);
+  }
+
+  getModel() {
+    return`Model: ${this.model}`;
+  }
+}
