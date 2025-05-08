@@ -14,6 +14,8 @@ const filterByRating = (
     return filteredArray;
 }
 
-const concatenateArrays<T> = (...arrays: T[][]): T[] => {
-    return []
+const concatenateArrays = <T>(...arrays: T[][]): T[] => {
+    const arr = [] as T[];
+    const concatedArr = arr.concat(...arrays);
+    return concatedArr;
 }
