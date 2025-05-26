@@ -48,3 +48,13 @@ INSERT INTO rangers(name, region) VALUES
 -- * task -- 2
 SELECT COUNT(DISTINCT spacies_id) as unique_species_count FROM sightings;
 
+-- * task -- 3
+SELECT * FROM sightings WHERE location ILIKE '%Pass%';
+
+
+-- * task -- 7
+UPDATE species SET conservation_status = 'Historic' WHERE discovery_date < '1800-01-01';
+
+
+
+-- !!! task 4, 5, 6 kora hoy nai
