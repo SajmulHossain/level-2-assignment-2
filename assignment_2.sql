@@ -51,6 +51,8 @@ SELECT COUNT(DISTINCT spacies_id) as unique_species_count FROM sightings;
 -- * task -- 3
 SELECT * FROM sightings WHERE location ILIKE '%Pass%';
 
+-- * task -- 4
+SELECT name, count(sighting_id) AS total_sightings FROM rangers JOIN sightings USING(ranger_id) GROUP BY name;
 
 -- * task -- 7
 UPDATE species SET conservation_status = 'Historic' WHERE discovery_date < '1800-01-01';
