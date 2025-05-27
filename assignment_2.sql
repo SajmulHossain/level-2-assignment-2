@@ -4,6 +4,9 @@ CREATE TABLE rangers (
     region VARCHAR(50) NOT NULL
 );
 
+SELECT * FROM rangers;
+SELECT * FROM species;
+SELECT * FROM sightings;
 CREATE TABLE species(
     species_id SERIAL PRIMARY KEY,
     common_name VARCHAR(50) NOT NULL,
@@ -54,9 +57,26 @@ SELECT * FROM sightings WHERE location ILIKE '%Pass%';
 -- * task -- 4
 SELECT name, count(sighting_id) AS total_sightings FROM rangers JOIN sightings USING(ranger_id) GROUP BY name;
 
+-- * task -- 6
+SELECT common_name, sighting_time, name FROM sightings 
+JOIN species ON sightings.spacies_id = species.species_id
+JOIN rangers ON rangers.ranger_id = sightings.ranger_id
+ORDER BY sighting_time DESC
+LIMIT 2;
+
 -- * task -- 7
 UPDATE species SET conservation_status = 'Historic' WHERE discovery_date < '1800-01-01';
 
+-- * task -- 8
+SELECT sighting_id,
+    CASE 
+        WHEN extract(HOUR FROM sighting_time) < 12 THEN 'Morning'
+        WHEN extract(HOUR FROM sighting_time) BETWEEN 12 AND 17 THEN 'Afternoon'
+        ELSE 'Evening'
+    END as time_of_day
+FROM sightings;
 
+-- * task -- 9
+DELETE FROM rangers WHERE ranger_id NOT IN(SELECT DISTINCT ranger_id FROM sightings);
 
--- !!! task 4, 5, 6 kora hoy nai
+-- !!! task 5, kora hoy nai
