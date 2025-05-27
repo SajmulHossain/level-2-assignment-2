@@ -62,11 +62,9 @@ SELECT common_name FROM species
     LEFT JOIN sightings ON species.species_id = sightings.species_id
     WHERE sightings.species_id IS NULL;
 
-    SELECT * FROM sightings;
-
 -- * task -- 6
 SELECT common_name, sighting_time, name FROM sightings 
-JOIN species ON sightings.spacies_id = species.species_id
+JOIN species ON sightings.species_id = species.species_id
 JOIN rangers ON rangers.ranger_id = sightings.ranger_id
 ORDER BY sighting_time DESC
 LIMIT 2;
@@ -85,5 +83,3 @@ FROM sightings;
 
 -- * task -- 9
 DELETE FROM rangers WHERE ranger_id NOT IN(SELECT DISTINCT ranger_id FROM sightings);
-
--- !!! task 5, kora hoy nai
